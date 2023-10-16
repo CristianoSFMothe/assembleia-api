@@ -68,3 +68,32 @@ Indica a condição da respsota de uma requisição
 * 400 - BAD REQUEST
 * 404 - NOT FOUND
 * 500 - SERVER ERROR
+
+# Pautas
+
+Objetos de votações nas assembléias do condomínio
+
+* Criar uma pauta
+* Iniciar a sessão para uma pauta
+* Listar pautas
+
+## Criar uma pauta
+
+Para criação da pauta será necessário informar a descrição da mesma, regras que deverão ser observadas:
+
+1. Só poderá existir uma Pauta por descrição
+
+## Iniciar a sessão para uma pauta
+
+Para iniciar a sesão de uma pauta, é necessário informar, em minutos, a quantidade de tempo que ela estará aberta para receber a votação, regras que deverão ser observadas?
+
+1. Se os munutos não forem passados, ela terá o valor padrão de 1o minutos.
+2. Se a pauta já tiver sido iniciada não poderá ser iniciada novamente.
+
+## Listar Pautas
+
+Lista as pautas, informando qual status, entre os status, temos:
+
+1. Sessão não iniciada
+2. Sessão iniciada
+3. Finalizada
