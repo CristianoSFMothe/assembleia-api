@@ -2,7 +2,7 @@
 
 ## Ferramentas utilizadas
 
-![2023-10-16_09h11_09](https://github.com/CristianoSFMothe/assembleia-api/assets/68359459/55bde00b-d29e-44ee-b2a1-8095e4cd75c0)
+![2023-10-16_09h11_09](https://github.com/CristianoSFMothe/assembleia-api/assets/68359459/438454d7-f8a6-4ef8-9522-2d47c2f0119c)
 
 ## Arquitetura
 
