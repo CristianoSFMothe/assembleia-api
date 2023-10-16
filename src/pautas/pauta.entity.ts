@@ -15,7 +15,7 @@ export class Pauta {
   description: string;
 
   @CreateDateColumn({ name: 'date_register' })
-  dateRegister: Date;
+  dateRegister?: Date;
 
   @Column({ type: 'timestamp', nullable: true })
   open?: Date;
