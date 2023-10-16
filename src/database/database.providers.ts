@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
+import { Provider } from '@nestjs/common';
 
 dotenv.config();
 
-export const DataBaseProviders = [
+export const DataBaseProviders: Provider[] = [
   {
     provide: 'DATA_SOURCE',
     useFactory: async () => {
