@@ -1,73 +1,70 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Assembleia API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Ferramentas utilizadas
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+![Alt text](2023-10-16_09h11_09.png)
 
-## Description
+## Arquitetura
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+![Alt text](arquitetura.gif)
 
-## Installation
+# Rest
 
-```bash
-$ npm install
-```
+**Definição**
 
-## Running the app
+### Representational State Transfer
 
-```bash
-# development
-$ npm run start
+Conjunto de princípios e definições necessários para a criação de um projeto com interfaces bem definidas
 
-# watch mode
-$ npm run start:dev
+# HTTP
 
-# production mode
-$ npm run start:prod
-```
+**Definição**
 
-## Test
+### Hypertext Transfer Protocol
 
-```bash
-# unit tests
-$ npm run test
+É um protocolo de comunicação utilizado para sistemas de informação de hipermídia, distribuídos e colaborativos.
 
-# e2e tests
-$ npm run test:e2e
+### Composição
 
-# test coverage
-$ npm run test:cov
-```
+* Request
+* Response
+* Query Params
+* Métodos (GET, POST, DELETE, etc)
+* Códigos de Status (200, 404, 500)
+* Cabeçalhos
+* Conteúdo
 
-## Support
+## Messagens HTTP
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+#### Request
 
-## Stay in touch
+* URL
+* Headers
+* Body (Conteúdo)
+* Método / Verbo  HTTP
+* Query Params
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+#### Response
 
-## License
+* Headers
+* Body
+* Código de Status
 
-Nest is [MIT licensed](LICENSE).
+#### Méodos / Verbos HTTp
+
+Indica a ação a ser executada para um dado recurso
+
+* GET
+* POST
+* PUT
+* DELETE
+* PATCH
+
+#### Códigos de Status HTTP
+
+Indica a condição da respsota de uma requisição
+
+* 200 - OK
+* 400 - BAD REQUEST
+* 404 - NOT FOUND
+* 500 - SERVER ERROR
