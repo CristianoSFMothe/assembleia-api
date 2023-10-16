@@ -19,7 +19,7 @@ export const DataBaseProviders = [
           __dirname + '/../**/*.entity{.ts,.js}'
         ],
         synchronize: true,
-        charset: 'utf8',
+        charset: 'utf8', 
       });
 
       return dataSource.initialize();
