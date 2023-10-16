@@ -22,4 +22,8 @@ export class Pauta {
 
   @Column({ type: 'timestamp', nullable: true })
   close?: Date;
+
+  getStatus(): string {
+    return 'Sem status';
+  }
 }
