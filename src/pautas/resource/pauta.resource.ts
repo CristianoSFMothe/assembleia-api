@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Pauta } from './pauta.entity';
+import { Pauta } from '../entities/pauta.entity';
 export class CreatePautaResource {
   description: string;
 }

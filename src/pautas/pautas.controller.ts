@@ -1,8 +1,8 @@
 import { Body, Controller, Res, Post } from '@nestjs/common';
 import { Response } from 'express';
 import { PautasService } from './pautas.service';
-import { CreatePautaResource, toDomain } from './pauta.resource';
-import { Pauta } from './pauta.entity';
+import { CreatePautaResource, toDomain } from './resource/pauta.resource';
+import { Pauta } from './entities/pauta.entity';
 
 @Controller('pautas')
 export class PautasController {

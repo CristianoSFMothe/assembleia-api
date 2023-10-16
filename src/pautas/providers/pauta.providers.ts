@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { DataSource, Repository } from 'typeorm';
-import { Pauta } from './pauta.entity';
+import { Pauta } from '../entities/pauta.entity';
 import { Provider } from '@nestjs/common';
 
 const PautaRepository: Provider<Repository<Pauta>> = {

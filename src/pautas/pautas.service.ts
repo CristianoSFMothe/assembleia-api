@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Pauta } from './pauta.entity';
+import { Pauta } from './entities/pauta.entity';
 import { Repository } from 'typeorm';
 import { Result } from '../common/results';
 
