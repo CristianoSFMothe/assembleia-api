@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Pauta } from './pauta.entity';
 import { Repository } from 'typeorm';
+import { Result } from '../common/results';
 
 @Injectable()
 export class PautasService {
@@ -9,7 +10,7 @@ export class PautasService {
     private readonly pautaRepository: Repository<Pauta>,
   ) {}
 
-  public async save(pauta: Pauta): Promise<Pauta> {
+  public async save(pauta: Pauta): Promise<Result<Pauta>> {
     const description = pauta.description;
 
     const pautaExists = await this.pautaRepository.findOne({
@@ -19,11 +20,11 @@ export class PautasService {
     });
 
     if (pautaExists) {
-      throw Error('Pauta existente');
+      return new Result(null, new Error('Pauta existente'));
     }
 
     pauta = await this.pautaRepository.save(pauta);
 
-    return pauta;
+    return new Result(pauta, null);
   }
 }

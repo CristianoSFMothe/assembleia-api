@@ -14,8 +14,14 @@ export class PautasController {
     @Res() response: Response,
   ) {
     const pautaDomain: Pauta = toDomain(pauta);
-    const savePauta = await this.pautaService.save(pautaDomain);
+    const result = await this.pautaService.save(pautaDomain);
 
-    return response.send(savePauta).status(201);
+    if (result.isError()) {
+      return response.status(409).send({
+        message: result.error.message,
+      });
+    }
+
+    return response.status(201).send(result.value);
   }
 }
