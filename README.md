@@ -2,11 +2,11 @@
 
 ## Ferramentas utilizadas
 
-![Alt text](2023-10-16_09h11_09.png)
+![2023-10-16_09h11_09](https://github.com/CristianoSFMothe/assembleia-api/assets/68359459/55bde00b-d29e-44ee-b2a1-8095e4cd75c0)
 
 ## Arquitetura
 
-![Alt text](arquitetura.gif)
+![arquitetura](https://github.com/CristianoSFMothe/assembleia-api/assets/68359459/d8ccab01-cb01-41a5-9279-3c5d1c0db159)
 
 # Rest
 
