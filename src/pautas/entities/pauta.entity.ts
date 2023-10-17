@@ -24,6 +24,20 @@ export class Pauta {
   close?: Date;
 
   getStatus(): string {
-    return 'Sem status';
+    if (this.close && this.close < new Date()) {
+      return StatusPauta.ENCERRADA;
+    }
+
+    if (this.open) {
+      return StatusPauta.INICIADA;
+    }
+
+    return StatusPauta.NAO_INICIADA;
   }
+}
+
+enum StatusPauta {
+  NAO_INICIADA = 'Sessão não iniciada',
+  INICIADA = 'Sessão iniciada',
+  ENCERRADA = 'Pauta encerrada',
 }

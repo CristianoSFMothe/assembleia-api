@@ -24,5 +24,5 @@ export function toDomain(resource: CreatePautaResource): Pauta {
   pauta.description = resource.description;
 
   return pauta;
-
 }
+
