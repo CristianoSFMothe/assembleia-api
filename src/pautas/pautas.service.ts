@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Inject, Injectable } from '@nestjs/common';
 import { Pauta } from './entities/pauta.entity';
 import { Repository } from 'typeorm';
@@ -5,6 +6,8 @@ import { Result } from '../common/results';
 
 @Injectable()
 export class PautasService {
+  static STANDARD_TIME_PAUTA: number = 10;
+
   constructor(
     @Inject('PAUTA_REPOSITORY')
     private readonly pautaRepository: Repository<Pauta>,
@@ -30,5 +33,22 @@ export class PautasService {
 
   public async findAll(): Promise<Pauta[]> {
     return await this.pautaRepository.find();
+  }
+
+  public async startSession(
+    pauta: Pauta,
+    minutes: number = PautasService.STANDARD_TIME_PAUTA,
+  ): Promise<boolean> {
+    if (!pauta.isPossibleToStartSession()) {
+      return false;
+    }
+
+    pauta.open = new Date();
+
+    pauta.close = new Date(pauta.open.getTime() + minutes * 6000);
+
+    await this.pautaRepository.update(pauta.id, pauta);
+
+    return true;
   }
 }
