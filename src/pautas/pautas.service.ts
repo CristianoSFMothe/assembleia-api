@@ -14,7 +14,7 @@ export class PautasService {
     private readonly pautaRepository: Repository<Pauta>,
   ) {}
 
-  public async save(pauta: Pauta): Promise<Result<Pauta>> {
+  public async save(pauta: Pauta): Promise<Result<Pauta, Error>> {
     const description = pauta.description;
 
     const pautaExists = await this.pautaRepository.findOne({

@@ -1,10 +1,12 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { Vote, voteOption } from './entities/vote.entity';
 import { AssociateService } from './associate/associate.service';
 import { Pauta } from '../pautas/entities/pauta.entity';
 import { Result } from '../common/results';
 import { Associate } from './associate/associate.entity';
+import { MessagerHelper } from '../common/meessages/messages.helper';
+import { HttpError } from '../common/httpError';
 
 @Injectable()
 export class VoteService {
@@ -18,9 +20,15 @@ export class VoteService {
     pauta: Pauta,
     cpf: string,
     voteOption: voteOption,
-  ): Promise<Result<Vote>> {
+  ): Promise<Result<Vote, HttpError>> {
     if (!pauta.isWasStarted()) {
-      return new Result(null, new Error('Pauta não está em sessão'));
+      return new Result(
+        null,
+        new HttpError(
+          MessagerHelper.PAUTA_NOT_SESSION,
+          HttpStatus.UNPROCESSABLE_ENTITY,
+        ),
+      );
     }
 
     const associate = await this.associateService.recoverOrRegister(cpf);
@@ -31,7 +39,10 @@ export class VoteService {
     );
 
     if (voteHasAlreadyBeenRegistered) {
-      return new Result(null, new Error('Voto já registrado anteriomente.'));
+      return new Result(
+        null,
+        new HttpError(MessagerHelper.VOTE_EXISTING, HttpStatus.CONFLICT),
+      );
     }
 
     const vote = new Vote();

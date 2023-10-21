@@ -3,7 +3,11 @@ export const MessagerHelper = {
   COULD_NOT_START_A_SESSION:
     'Não foi possível iniciar sessão para essa pauta. Sua sessão já foi iniciata para essa pauta',
 
-  PAUTA_NOT_FOUD: 'Pauta não encontrada',
+  PAUTA_NOT_FOUD: 'Pauta não encontrada!',
 
-  PAUTA_EXISTING: 'Pauta existente',
+  PAUTA_EXISTING: 'Pauta existente.',
+
+  VOTE_EXISTING: 'Voto já registrado anteriomente.',
+
+  PAUTA_NOT_SESSION: 'Pauta não está em sessão',
 };
