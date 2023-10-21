@@ -3,6 +3,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { Pauta } from './entities/pauta.entity';
 import { Repository } from 'typeorm';
 import { Result } from '../common/results';
+import { MessagerHelper } from '../common/meessages/messages.helper';
 
 @Injectable()
 export class PautasService {
@@ -23,7 +24,7 @@ export class PautasService {
     });
 
     if (pautaExists) {
-      return new Result(null, new Error('Pauta existente'));
+      return new Result(null, new Error(MessagerHelper.PAUTA_EXISTING));
     }
 
     pauta = await this.pautaRepository.save(pauta);
@@ -50,5 +51,9 @@ export class PautasService {
     await this.pautaRepository.update(pauta.id, pauta);
 
     return true;
+  }
+
+  public async findById(id: string): Promise<Pauta> {
+    return await this.pautaRepository.findOneBy({ id: id });
   }
 }
