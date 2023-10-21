@@ -97,3 +97,20 @@ Lista as pautas, informando qual status, entre os status, temos:
 1. Sessão não iniciada
 2. Sessão iniciada
 3. Finalizada
+
+# Votos
+
+## Registrar voto
+
+Regista o voto de um associado para uma pauta.
+
+* Regras:
+  1. Pauta precisa existir e estar em sessão
+  2. Permitir apenas 1 voto por associado.
+
+
+# Resultaodos
+
+## Obter Resultados
+
+Dada uma **Pauta**, retorna seu resultado.

@@ -49,7 +49,7 @@ export class PautasController {
     return response.status(HttpStatus.OK).send(result.map(toRepresentation));
   }
 
-  @Post(':id/session')
+  @Post(':id/sessao')
   public async createSessio(
     @Param('id') id: string,
     @Body() resource: NewSessionResource,
