@@ -6,6 +6,6 @@ import { Vote } from './entities/vote.entity';
 export class VoteService {
   constructor(
     @Inject('VOTO_REPOSITORY')
-    private readonly votoRepository: Repository<Vote>,
+    private readonly voteRepository: Repository<Vote>,
   ) {}
 }
