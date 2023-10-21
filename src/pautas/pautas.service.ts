@@ -46,7 +46,7 @@ export class PautasService {
 
     pauta.open = new Date();
 
-    pauta.close = new Date(pauta.open.getTime() + minutes * 6000);
+    pauta.close = new Date(pauta.open.getTime() + minutes * 60000);
 
     await this.pautaRepository.update(pauta.id, pauta);
 
