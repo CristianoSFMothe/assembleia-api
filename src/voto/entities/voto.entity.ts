@@ -7,10 +7,11 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { Associado } from '../associado/associado.entity';
+import { IsNotEmpty } from 'class-validator';
 
 @Entity()
 export class Voto {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id?: string;
 
   @ManyToOne(() => Pauta)
@@ -22,6 +23,7 @@ export class Voto {
   associado: Associado;
 
   @Column({ name: 'voto' })
+  @IsNotEmpty()
   opcaoVoto: OpcaoVoto;
 }
 

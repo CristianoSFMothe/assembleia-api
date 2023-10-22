@@ -1,9 +1,10 @@
 import { Pauta } from '../entities/pauta.entity';
 import { IsNotEmpty } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+import { MessagerHelper } from 'src/common/messages/messages.helper';
 
 export class CriarPautaResource {
-  @IsNotEmpty({ message: 'Descrição é um campo obrigatório' })
+  @IsNotEmpty({ message: MessagerHelper.DESCRIPTION_REQUIRED })
   @ApiProperty({ name: 'descricao', example: 'Votação do aumento do Gás' })
   descricao: string;
 }

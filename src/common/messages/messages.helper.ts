@@ -9,5 +9,9 @@ export const MessagerHelper = {
   VOTE_EXISTING: 'Voto já registrado anteriomente.',
   PAUTA_NOT_SESSION: 'Pauta não está em sessão',
   RESULT_NOT_AVAILABLE: 'Resultado ainda não disponível',
-  VOTE_EXAMPLE:'SIM ou NAO'
+  VOTE_EXAMPLE:'SIM ou NAO',
+  DESCRIPTION_REQUIRED: 'Descrição é um campo obrigatório',
+  CPF_REQUIRED: 'Campo CPF é obrigatório',
+  VOTE_OPTIONS_REQUIRED: 'Campo Opção de Voto é obrigatório',
+  VOTE_OPTIONS: 'Campo Opção Voto só poderá ter os valores SIM ou NAO',
 };

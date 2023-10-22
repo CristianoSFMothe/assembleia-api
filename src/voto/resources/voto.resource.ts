@@ -5,12 +5,12 @@ import { MessagerHelper } from 'src/common/messages/messages.helper';
 
 export class RegistroVotoResource {
   @ApiProperty()
-  @IsNotEmpty({ message: 'Campo CPF é obrigatório' })
+  @IsNotEmpty({ message: MessagerHelper.CPF_REQUIRED })
   cpf: string;
 
-  @IsNotEmpty({ message: 'Campo Opção de Voto é obrigatório' })
+  @IsNotEmpty({ message: MessagerHelper.VOTE_OPTIONS_REQUIRED })
   @IsIn([OpcaoVoto.NAO, OpcaoVoto.SIM], {
-    message: 'Campo Opção Voto só poderá ter os valores SIM ou NAO',
+    message: MessagerHelper.VOTE_OPTIONS,
   })
   @ApiProperty({ example: MessagerHelper.VOTE_EXAMPLE })
   opcaoVoto: OpcaoVoto;

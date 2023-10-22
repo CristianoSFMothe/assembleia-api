@@ -1,3 +1,4 @@
+import { IsNotEmpty, IsString } from 'class-validator';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -7,10 +8,12 @@ import {
 
 @Entity()
 export class Pauta {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id?: string;
 
   @Column()
+  @IsString()
+  @IsNotEmpty()
   descricao: string;
 
   @CreateDateColumn({ name: 'data_cadastro' })
