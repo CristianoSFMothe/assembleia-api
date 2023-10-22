@@ -4,18 +4,25 @@ import { PautasService } from '../pautas/pautas.service';
 import { VotoService } from './voto.service';
 import { RegistroVotoResource } from './resources/voto.resource';
 import { ErrorResponse } from '../common/erro.resource';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { MessagerHelper } from '../common/messages/messages.helper';
+import { CreateVotoSwagger } from '../common/swagger/create-voto.swagger';
 
-@Controller('pautas/:id/votos')
 @ApiTags('Votos')
+@Controller('pautas/:id/votos')
 export class VotoController {
   constructor(
     private readonly pautasService: PautasService,
     private readonly votoService: VotoService,
   ) {}
 
-  @Post('')
+  @Post()
+  @ApiOperation({ summary: 'Registar um voto' })
+  @ApiResponse({
+    status: 201,
+    description: 'Criação de uma pauta',
+    type: CreateVotoSwagger,
+  })
   async registrarVoto(
     @Param('id') idPauta: string,
     @Body() resource: RegistroVotoResource,

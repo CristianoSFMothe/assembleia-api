@@ -14,4 +14,5 @@ export const MessagerHelper = {
   CPF_REQUIRED: 'Campo CPF é obrigatório',
   VOTE_OPTIONS_REQUIRED: 'Campo Opção de Voto é obrigatório',
   VOTE_OPTIONS: 'Campo Opção Voto só poderá ter os valores SIM ou NAO',
+  MESSAGE_LOGGER_CREATE: 'Criando nova pauta'
 };

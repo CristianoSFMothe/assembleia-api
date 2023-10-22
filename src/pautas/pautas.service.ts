@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
-import { Injectable, Inject, Res } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { Pauta } from './entities/pauta.entity';
-import { Result } from 'src/common/result';
-import { MessagerHelper } from 'src/common/messages/messages.helper';
+import { Result } from '../common/result';
+import { MessagerHelper } from '../common/messages/messages.helper';
 
 @Injectable()
 export class PautasService {

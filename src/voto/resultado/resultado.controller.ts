@@ -1,9 +1,11 @@
 import { Controller, Get, HttpStatus, Param, Res } from '@nestjs/common';
 import { Response } from 'express';
 import { VotoService } from '../voto.service';
-import { PautasService } from 'src/pautas/pautas.service';
-import { ErrorResponse } from 'src/common/erro.resource';
-import { ApiTags } from '@nestjs/swagger';
+import { PautasService } from '../../pautas/pautas.service';
+import { ErrorResponse } from '../../common/erro.resource';
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { MessagerHelper } from '../../common/messages/messages.helper';
+import { ReturnResultSwagger } from 'src/common/swagger/return-result.swagger';
 
 @Controller('pautas/:id/resultados')
 @ApiTags('Votos')
@@ -14,6 +16,16 @@ export class ResultadoController {
   ) {}
 
   @Get()
+  @ApiOperation({ summary: 'Retornar o resultado de uma sessão' })
+  @ApiResponse({
+    status: 200,
+    description: 'Retorna o resultado da votação',
+    type: ReturnResultSwagger,
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'Pauta não encontrada',
+  })
   async obterResultado(
     @Param('id') idPauta: string,
     @Res() response: Response,
@@ -23,7 +35,7 @@ export class ResultadoController {
     if (!pauta) {
       return response
         .status(HttpStatus.NOT_FOUND)
-        .send(new ErrorResponse('Pauta não encontrada.'));
+        .send(new ErrorResponse(MessagerHelper.PAUTA_NOT_FOUD));
     }
 
     const result = await this.votoService.obterResultado(pauta);

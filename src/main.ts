@@ -16,13 +16,13 @@ async function bootstrap() {
     .setContact(
       'Cristiano Ferreira Mothe',
       'https://github.com/CristianoSFMothe/assembleia-api',
-      'cursodsousa@gmail.com',
+      null,
     )
     .build();
 
   const swaggerDoc = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api', app, swaggerDoc);
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();

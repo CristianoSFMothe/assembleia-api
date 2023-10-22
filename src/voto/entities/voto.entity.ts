@@ -1,4 +1,4 @@
-import { Pauta } from 'src/pautas/entities/pauta.entity';
+import { Pauta } from '../../pautas/entities/pauta.entity';
 import {
   Column,
   Entity,
@@ -7,7 +7,6 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { Associado } from '../associado/associado.entity';
-import { IsNotEmpty } from 'class-validator';
 
 @Entity()
 export class Voto {
@@ -23,7 +22,6 @@ export class Voto {
   associado: Associado;
 
   @Column({ name: 'voto' })
-  @IsNotEmpty()
   opcaoVoto: OpcaoVoto;
 }
 

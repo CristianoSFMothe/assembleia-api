@@ -2,12 +2,12 @@ import { HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { OpcaoVoto, Voto } from './entities/voto.entity';
 import { AssociadoService } from './associado/associado.service';
-import { Pauta } from 'src/pautas/entities/pauta.entity';
-import { Result } from 'src/common/result';
+import { Pauta } from '../pautas/entities/pauta.entity';
+import { Result } from '../common/result';
 import { Associado } from './associado/associado.entity';
-import { HttpError } from 'src/common/httpError';
+import { HttpError } from '../common/httpError';
 import { ResultadoVotacaoResource } from './resultado/resultado.resource';
-import { MessagerHelper } from 'src/common/messages/messages.helper';
+import { MessagerHelper } from '../common/messages/messages.helper';
 
 @Injectable()
 export class VotoService {

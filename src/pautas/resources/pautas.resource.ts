@@ -1,7 +1,7 @@
 import { Pauta } from '../entities/pauta.entity';
 import { IsNotEmpty } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { MessagerHelper } from 'src/common/messages/messages.helper';
+import { MessagerHelper } from '../../common/messages/messages.helper';
 
 export class CriarPautaResource {
   @IsNotEmpty({ message: MessagerHelper.DESCRIPTION_REQUIRED })

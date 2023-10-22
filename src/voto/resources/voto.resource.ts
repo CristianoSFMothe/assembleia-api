@@ -1,7 +1,7 @@
 import { OpcaoVoto } from '../entities/voto.entity';
 import { IsNotEmpty, IsIn } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { MessagerHelper } from 'src/common/messages/messages.helper';
+import { MessagerHelper } from '../../common/messages/messages.helper';
 
 export class RegistroVotoResource {
   @ApiProperty()
@@ -13,5 +13,6 @@ export class RegistroVotoResource {
     message: MessagerHelper.VOTE_OPTIONS,
   })
   @ApiProperty({ example: MessagerHelper.VOTE_EXAMPLE })
+  @IsNotEmpty()
   opcaoVoto: OpcaoVoto;
 }
