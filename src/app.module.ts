@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { DatabaseModule } from './database/database.module';
 import { PautasModule } from './pautas/pautas.module';
-import { VoteModule } from './vote/vote.module';
+import { VotoModule } from './voto/voto.module';
 
 @Module({
-  imports: [DatabaseModule, PautasModule, VoteModule],
+  imports: [DatabaseModule, PautasModule, VotoModule],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

@@ -1,61 +1,59 @@
-/* eslint-disable prettier/prettier */
 import {
-  Column,
-  CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
 } from 'typeorm';
 
-@Entity({ name: 'pauta' })
+@Entity()
 export class Pauta {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id?: string;
 
-  @Column({ nullable: false })
-  description: string;
+  @Column()
+  descricao: string;
 
-  @CreateDateColumn({ name: 'date_register' })
-  dateRegister?: Date;
-
-  @Column({ type: 'timestamp', nullable: true })
-  open?: Date;
+  @CreateDateColumn({ name: 'data_cadastro' })
+  dataCadastro?: Date;
 
   @Column({ type: 'timestamp', nullable: true })
-  close?: Date;
+  abertura?: Date;
 
-  getStatus(): string {
-    if (this.close && this.close < new Date()) {
+  @Column({ type: 'timestamp', nullable: true })
+  fechamento?: Date;
+
+  obterStatus(): string {
+    if (this.fechamento && this.fechamento < new Date()) {
       return StatusPauta.ENCERRADA;
     }
 
-    if (this.open) {
+    if (this.abertura) {
       return StatusPauta.INICIADA;
     }
 
     return StatusPauta.NAO_INICIADA;
   }
 
-  public isWasStarted(): boolean {
-    return  this.isInStatus(StatusPauta.INICIADA);
+  public isFoiIniciada(): boolean {
+    return this.isInStatus(StatusPauta.INICIADA);
   }
 
-  public isWasClosed(): boolean {
-    return  this.isInStatus(StatusPauta.ENCERRADA);
+  public isFoiEncerrada(): boolean {
+    return this.isInStatus(StatusPauta.ENCERRADA);
   }
 
-  public isPossibleToStartSession(): boolean {
-    return  this.isInStatus(StatusPauta.NAO_INICIADA);
+  public isPossivelIniciarSessao(): boolean {
+    return this.isInStatus(StatusPauta.NAO_INICIADA);
   }
 
-  public isInStatus(checkStatus: StatusPauta): boolean {
-    const status = this.getStatus();
-
-    return status == checkStatus;
+  public isInStatus(statusVerificar: StatusPauta): boolean {
+    const status = this.obterStatus();
+    return status == statusVerificar;
   }
 }
 
 enum StatusPauta {
   NAO_INICIADA = 'Sessão não iniciada',
   INICIADA = 'Sessão iniciada',
-  ENCERRADA = 'Pauta encerrada',
+  ENCERRADA = 'Pauta Encerrada',
 }

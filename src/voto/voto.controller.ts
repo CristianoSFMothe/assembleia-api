@@ -1,22 +1,24 @@
 import { Body, Controller, HttpStatus, Param, Post, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { PautasService } from 'src/pautas/pautas.service';
-import { VoteService } from './vote.service';
-import { RegistrationVoteResource } from './resourcer/vote.resource';
-import { ErrorResponse } from 'src/common/error.resource';
-import { MessagerHelper } from 'src/common/meessages/messages.helper';
+import { PautasService } from '../pautas/pautas.service';
+import { VotoService } from './voto.service';
+import { RegistroVotoResource } from './resources/voto.resource';
+import { ErrorResponse } from '../common/erro.resource';
+import { ApiTags } from '@nestjs/swagger';
+import { MessagerHelper } from '../common/messages/messages.helper';
 
-@Controller('pautas/:id/voto')
-export class VoteController {
+@Controller('pautas/:id/votos')
+@ApiTags('Votos')
+export class VotoController {
   constructor(
     private readonly pautasService: PautasService,
-    private readonly voteService: VoteService,
+    private readonly votoService: VotoService,
   ) {}
 
-  @Post()
-  async registerVote(
+  @Post('')
+  async registrarVoto(
     @Param('id') idPauta: string,
-    @Body() resource: RegistrationVoteResource,
+    @Body() resource: RegistroVotoResource,
     @Res() response: Response,
   ) {
     const pauta = await this.pautasService.findById(idPauta);
@@ -27,15 +29,14 @@ export class VoteController {
         .send(new ErrorResponse(MessagerHelper.PAUTA_NOT_FOUD));
     }
 
-    const result = await this.voteService.registerVote(
+    const result = await this.votoService.registrarVoto(
       pauta,
       resource.cpf,
-      resource.voteOption,
+      resource.opcaoVoto,
     );
 
     if (result.isError()) {
       const error = result.error;
-
       return response
         .status(error.status)
         .send(new ErrorResponse(error.message));

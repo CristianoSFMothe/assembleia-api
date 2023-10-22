@@ -1,11 +1,9 @@
-/* eslint-disable prettier/prettier */
+import { Provider } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
-import { Provider } from '@nestjs/common';
-
 dotenv.config();
 
-export const DataBaseProviders: Provider[] = [
+export const dataBaseProviders: Provider[] = [
   {
     provide: 'DATA_SOURCE',
     useFactory: async () => {
@@ -16,13 +14,10 @@ export const DataBaseProviders: Provider[] = [
         username: process.env.DB_USERNAME,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_DATABASE,
-        entities: [
-          __dirname + '/../**/*.entity{.ts,.js}'
-        ],
+        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         synchronize: true,
-        charset: 'utf8', 
+        charset: 'utf8',
       });
-
       return dataSource.initialize();
     },
   },

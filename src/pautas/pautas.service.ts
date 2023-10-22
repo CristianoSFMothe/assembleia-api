@@ -1,29 +1,29 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
-import { Inject, Injectable } from '@nestjs/common';
-import { Pauta } from './entities/pauta.entity';
+import { Injectable, Inject, Res } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { Result } from '../common/results';
-import { MessagerHelper } from '../common/meessages/messages.helper';
+import { Pauta } from './entities/pauta.entity';
+import { Result } from 'src/common/result';
+import { MessagerHelper } from 'src/common/messages/messages.helper';
 
 @Injectable()
 export class PautasService {
-  static STANDARD_TIME_PAUTA: number = 10;
+  static TEMPO_PADRAO_PAUTA: number = 10;
 
   constructor(
     @Inject('PAUTA_REPOSITORY')
     private readonly pautaRepository: Repository<Pauta>,
   ) {}
 
-  public async save(pauta: Pauta): Promise<Result<Pauta, Error>> {
-    const description = pauta.description;
+  async save(pauta: Pauta): Promise<Result<Pauta, Error>> {
+    const descricao = pauta.descricao;
 
-    const pautaExists = await this.pautaRepository.findOne({
+    const possivelPauta = await this.pautaRepository.findOne({
       where: {
-        description: description,
+        descricao: descricao,
       },
     });
 
-    if (pautaExists) {
+    if (possivelPauta) {
       return new Result(null, new Error(MessagerHelper.PAUTA_EXISTING));
     }
 
@@ -32,28 +32,29 @@ export class PautasService {
     return new Result(pauta, null);
   }
 
-  public async findAll(): Promise<Pauta[]> {
+  async findAll(): Promise<Pauta[]> {
     return await this.pautaRepository.find();
   }
 
-  public async startSession(
+  async iniciarSessao(
     pauta: Pauta,
-    minutes: number = PautasService.STANDARD_TIME_PAUTA,
+    minutos: number = PautasService.TEMPO_PADRAO_PAUTA,
   ): Promise<boolean> {
-    if (!pauta.isPossibleToStartSession()) {
+    if (!pauta.isPossivelIniciarSessao()) {
       return false;
     }
 
-    pauta.open = new Date();
-
-    pauta.close = new Date(pauta.open.getTime() + minutes * 60000);
+    pauta.abertura = new Date();
+    pauta.fechamento = new Date(pauta.abertura.getTime() + minutos * 60000);
 
     await this.pautaRepository.update(pauta.id, pauta);
 
     return true;
   }
 
-  public async findById(id: string): Promise<Pauta> {
-    return await this.pautaRepository.findOneBy({ id: id });
+  async findById(id: string): Promise<Pauta> {
+    return await this.pautaRepository.findOneBy({
+      id: id,
+    });
   }
 }
