@@ -12,8 +12,10 @@ export class CriarPautaResource {
 export class PautaResource {
   @ApiProperty()
   id: string;
+
   @ApiProperty()
   descricao: string;
+
   @ApiProperty()
   status: string;
 }

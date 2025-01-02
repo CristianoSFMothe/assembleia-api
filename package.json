@@ -1,8 +1,8 @@
 {
   "name": "assembleia-api",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "version": "1.0.1",
+  "description": "Sistema de API de votação para pauta em uma assembleia de condomínio",
+  "author": "Cristiano Ferreira Mothe",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
